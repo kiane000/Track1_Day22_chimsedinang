@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Nguyen Dang Ky Anh",
+    "student_id": "2A202601501",
+    "group_id": "GROUP-CONTENT-CREATOR-01",
+    "submitted_at": "2026-08-24T15:30:00+07:00"
+  },
+  "industry": "content-creator",
+  "product_context": {
+    "product_name": "CreatorGuard Publish Copilot",
+    "product_stage": "pilot",
+    "problem_statement": "Independent creators increasingly use AI to draft multi-language voice dubs and repurposed cuts of their own videos, but they have no reliable, real-time way to know before they hit publish whether a clip violates platform synthetic-media disclosure rules, brand-safety policy, or copyright, so they discover the problem only after a strike, demonetization, or takedown already hurt their channel.",
+    "target_users": ["Independent content creators publishing on video platforms", "Creator studio / MCN operations staff who manage publishing on behalf of multiple creators"],
+    "value_hypothesis": "If creators see an explained pre-publish compliance and synthetic-media disclosure check before their AI-dubbed video goes live, then avoidable strikes and demonetization events will drop, measured as a reduction in post-publish policy-strike rate for pilot channels within 90 days versus their pre-pilot baseline.",
+    "in_scope": ["AI-assisted multi-language dubbing of the creator's own voice for re-release of their own content", "Automated pre-publish check against platform community guidelines and synthetic-media disclosure requirements", "Creator-facing explanation of why a video was held plus a request-review action"],
+    "non_goals": ["Cloning or synthesizing the voice or likeness of any person other than the uploading creator", "Making the final platform enforcement decision (strikes, demonetization, takedown remain the platform trust & safety team's decision)", "Moderating comments, live chat, or any content the creator did not upload through this tool"],
+    "user_journey_moment": "The moment right after the AI voice-dub draft is generated and right before the creator presses Publish in the creator studio upload flow.",
+    "target_launch_or_review_date": "2026-11-16",
+    "automation_level": "semi-automated",
+    "fallback_experience": "If the AI compliance-check or dubbing service is unavailable or returns low confidence, publish is routed to a manual policy checklist the creator must complete, and any AI-dubbed audio track is withheld from going live until a human trust-and-safety reviewer clears it within the platform's published SLA.",
+    "decision_reversibility": "partially-reversible"
+  },
+  "system_profile": {
+    "purpose": "Give independent creators an AI copilot that drafts multi-language voice dubs of their own content and checks the draft against platform policy and synthetic-media disclosure rules before they publish.",
+    "user_groups": ["Independent content creators", "Multi-channel network (MCN) operations staff", "Platform trust & safety reviewers who receive escalated holds"],
+    "decision_impact": "Determines whether a video is auto-held for human review before it can publish, whether an AI-generated/altered-audio disclosure label is auto-applied for viewers, and whether a case is escalated to platform trust & safety for a possible policy strike.",
+    "data_types": ["Creator's own voice audio used to produce the dub", "Video script and caption text", "Platform community-guidelines and disclosure-policy reference text", "Creator's prior publish, strike, and demonetization history"],
+    "deployment_context": "Embedded as a pre-publish panel inside a creator studio web application, called synchronously during the upload-to-publish flow and integrated with the video platform's publish API.",
+    "target_markets": ["Vietnam", "European Union"],
+    "system_boundary": {
+      "model": "A third-party vendor-hosted voice-cloning/text-to-speech model used to generate the dubbed audio, plus an in-house policy-classification model fine-tuned on the platform's community-guidelines and disclosure-policy text.",
+      "application": "Creator Studio web app pre-publish dubbing and compliance-check panel.",
+      "people": ["Creator (content owner who approves or edits the dub)", "Trust & safety reviewer (handles auto-held cases)", "Product/policy manager (maintains the policy ruleset the classifier is trained and evaluated against)"],
+      "vendors": ["Third-party voice-cloning/text-to-speech API vendor", "Cloud model-hosting vendor for the policy-classification model"],
+      "upstream_inputs": ["Creator-uploaded source video, audio, and script", "Platform's published community guidelines and synthetic-media disclosure policy", "Creator's prior strike and demonetization history from the platform"],
+      "downstream_decisions": ["Whether the video publishes immediately or is auto-held for human review", "Whether an AI-generated-audio disclosure label is auto-applied to the published video", "Whether the case is escalated to platform trust & safety as a possible policy violation"]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 4,
+    "high_stakes": 4,
+    "sensitive_data": 3,
+    "affected_scale": 3,
+    "human_review_need": 4,
+    "rationale": "harm_severity=4: a missed disclosure on AI-cloned audio lets undisclosed synthetic media reach viewers, which can deceive audiences and, in the worst credible case documented in our research (impersonation-style scam ads using a creator's cloned likeness), enable financial fraud against viewers; it stops short of physical harm so is not a 5. high_stakes=4: an incorrect auto-hold or a missed disclosure directly affects a creator's monetization and channel standing, a livelihood-level harm, though it is recoverable over weeks through appeal rather than immediate or permanent. sensitive_data=3: the product processes the creator's voice biometric data for cloning, which is sensitive if leaked or reused outside the dub, but the creator is the data subject and consents to processing their own voice, which lowers severity versus third-party biometric use. affected_scale=3: impact scales with each creator's own viewership, which can range from a small channel to a large one, but this pilot is scoped to opted-in creators rather than a platform-wide rollout. human_review_need=4: irreversible platform actions such as strikes or demonetization should not be taken on the classifier's output alone, so human review is needed at the hold/escalation step and for confirming voice-clone consent, though not every publish needs review, so this is not a 5."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Vietnam's Law on Artificial Intelligence (134/2025/QH15) was approved 2025-12-11 and took effect 2026-03-01. The official government summary (SRC-05) confirms the law addresses 'AI-generated content' and cross-border AI platform responsibilities but does not detail the specific disclosure or labeling obligations that would apply to a voice-dubbing and pre-publish compliance product, so the applicable obligations cannot be confirmed from this source alone and require a full statutory-text legal review before Vietnam-market launch.",
+      "source_ids": ["SRC-05"]
+    },
+    "eu": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "The European Commission confirms (SRC-06) that AI Act transparency rules requiring deepfakes and AI-generated content to be clearly labelled took effect and began enforcement in August 2026. This directly implicates our AI-dubbed audio feature, but the exact scope of which creator-tool outputs count as in-scope 'deepfakes' under Article 50, and which obligations fall on us as a tool provider versus the creator as deployer, requires checking the full Act text and Commission guidelines rather than the summary page alone.",
+      "source_ids": ["SRC-06"]
+    },
+    "other_markets": "Not assessed. This pilot is scoped only to Vietnam and the European Union; a separate market-specific legal review would be required before target_markets is expanded to any other country.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "At least 20% reduction in average time-to-publish for multi-language dubbed videos among pilot creators within 90 days of pilot launch, without an increase in post-publish policy-strike rate versus each creator's pre-pilot baseline.",
+    "risk_kri": "Weekly rate of pilot-published videos that receive a platform-issued disclosure-related strike or takedown after publish; investigate any week this exceeds 0.5% of that week's pilot publishes.",
+    "guardrail_metric": "The synthetic-audio disclosure classifier's audited recall on realistic AI-dubbed content must never fall below 95%; if it does, automatic publish-clearing for dubbed content is disabled platform-wide until recall is restored and re-verified.",
+    "review_cadence": "Formal review at the 2026-11-16 pilot milestone and quarterly thereafter, plus an immediate out-of-cycle review triggered by any confirmed viewer-deception incident, any confirmed vendor voice-data-misuse escalation, or a material update to EU AI Act Article 50 guidance or Vietnam AI Law implementing decisions."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Head of Product, Creator Tools",
+    "risk_acceptance_owner": "VP of Trust & Safety",
+    "independent_reviewer": "Independent Legal & Privacy Review Board member",
+    "decision": "conditional-go",
+    "release_blockers": ["GAP-01: synthetic-audio disclosure classifier has not yet passed the required recall audit", "GAP-02: voice-cloning vendor data-processing addendum is not yet signed", "GAP-03: Vietnam AI Law legal review has not yet been completed"],
+    "release_conditions": ["Pilot is limited to a closed group of opted-in creators who have separately consented to the voice-cloning feature, not a general release", "GAP-01's classifier must pass the recall audit at or above 95% before the pilot is expanded beyond the closed group", "GAP-02's vendor data-processing addendum must be signed before any creator voice sample is sent to the vendor", "GAP-03's Vietnam legal opinion must be obtained before the pilot is offered to any Vietnam-market creator, and the equivalent EU Article 50 scope question must be resolved before any EU-market creator is enrolled"],
+    "next_review_trigger": "2026-11-16 scheduled pilot review, or immediately upon any confirmed viewer-deception incident, any confirmed vendor voice-data-misuse escalation, or new EU AI Act Article 50 guidance or Vietnam AI Law implementing decision affecting this product, whichever comes first.",
+    "residual_risk_rationale": "Scoping the pilot to a closed, opted-in creator group and holding publish for human review whenever the disclosure classifier is uncertain reduces, but does not eliminate, the residual risk of an undisclosed synthetic-audio video reaching viewers until GAP-01's recall audit passes. Requiring vendor sign-off before any voice sample is transmitted reduces the residual risk of vendor voice-data misuse described in GAP-02. Residual legal risk in Vietnam and the EU is accepted only for the narrow, closed pilot scope and only until GAP-03 and the equivalent EU review are complete, not for a general-availability launch."
+  }
+}
