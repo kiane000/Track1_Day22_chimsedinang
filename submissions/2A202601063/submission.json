@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Nguyễn Đức Anh",
+    "student_id": "2A202601063",
+    "group_id": "content-creator-group-3-members",
+    "submitted_at": "2026-08-24T13:00:00+07:00"
+  },
+  "industry": "content-creator",
+  "product_context": {
+    "product_name": "ScriptSource Ideation Copilot",
+    "product_stage": "pilot",
+    "problem_statement": "Independent video and podcast creators lose substantial planning time turning a topic into a differentiated, fact-aware outline and first script draft, while weak source tracking makes it hard to check factual claims and avoid accidental imitation before recording.",
+    "target_users": [
+      "Independent Vietnamese video creators",
+      "Podcast hosts and small creator teams",
+      "Editors who review outlines and scripts before recording"
+    ],
+    "value_hypothesis": "If creators receive editable ideas, outlines and draft passages linked to the public references they supplied, they can reach a review-ready script faster without increasing unsupported factual claims or unattributed similarity; the pilot will test time-to-review and evidence-quality targets before any wider launch.",
+    "in_scope": [
+      "Suggest content angles, titles for internal planning, outlines and editable first-draft script passages",
+      "Ground factual suggestions in creator-provided public URLs or pasted public excerpts and display source cards",
+      "Flag unsupported factual sentences, uncertain claims and high textual similarity for creator review",
+      "Collect explicit creator accept, edit or reject actions and reviewer evidence during the pilot"
+    ],
+    "non_goals": [
+      "No AI dubbing, voice cloning, thumbnail generation or platform upload",
+      "No automated copyright, defamation, advertising or platform-policy clearance",
+      "No autonomous publication, ranking, demonetization or content-removal decision",
+      "No ingestion of private documents, unreleased scripts, personal dossiers or licensed paywalled works during the pilot"
+    ],
+    "user_journey_moment": "After a creator chooses a topic and supplies public references, but before recording or publishing, the copilot proposes angles and a draft that the creator must review and edit.",
+    "target_launch_or_review_date": "2026-09-30",
+    "automation_level": "recommendation",
+    "fallback_experience": "If generation, citation retrieval or safety checks are unavailable or uncertain, the workspace preserves the creator's notes, disables AI suggestions, labels incomplete checks, and offers a manual outline and source-check checklist; no draft is sent to a publishing platform.",
+    "decision_reversibility": "partially-reversible"
+  },
+  "system_profile": {
+    "purpose": "Help creators explore differentiated content angles and produce an editable, source-linked outline and first script draft while making unsupported claims and similarity concerns visible before recording.",
+    "user_groups": [
+      "Creators who initiate and edit a draft",
+      "Editors or producers who review the draft",
+      "Trust and safety operators who investigate pilot alerts",
+      "Authors, publishers, quoted people and audiences who may be affected without using the product"
+    ],
+    "decision_impact": "The system influences which angle, wording, factual claims and references a creator may carry into a public video or podcast; the creator retains the final decision, but missed errors can propagate after publication and become costly to correct.",
+    "data_types": [
+      "Creator-entered topic, prompt and editorial preferences",
+      "Public URLs and public text excerpts deliberately supplied by the creator",
+      "Generated ideas, outlines, scripts, citations and uncertainty labels",
+      "Pilot interaction logs, accept-edit-reject events and safety-review records",
+      "Account identifiers minimized to a pseudonymous pilot participant ID"
+    ],
+    "deployment_context": "A restricted web pilot for invited adult creator teams. Drafts remain private inside the workspace, source retrieval is limited to public references supplied by the creator, and export is enabled only after visible review checks.",
+    "target_markets": [
+      "Vietnam",
+      "European Union pilot users only after legal review"
+    ],
+    "system_boundary": {
+      "model": "Vendor-hosted large language model used for ideation, summarization and draft generation; no model fine-tuning in the pilot",
+      "application": "Script workspace with reference ingestion, source cards, sentence-level support status, similarity alerts, edit history and an export gate",
+      "people": [
+        "Creator as final editorial decision-maker",
+        "Editor or producer as optional second reviewer for public-interest claims",
+        "Trust and Safety Lead with authority to pause a feature or pilot cohort",
+        "Privacy and Legal reviewers for data, copyright and market-scope changes"
+      ],
+      "vendors": [
+        "Contracted language-model API provider",
+        "Public-web retrieval and similarity-check service providers"
+      ],
+      "upstream_inputs": [
+        "Creator prompts and chosen topic",
+        "Creator-supplied public URLs or pasted public excerpts",
+        "Vendor model and retrieval-service outputs",
+        "Product safety rules and source-support thresholds"
+      ],
+      "downstream_decisions": [
+        "Creator choice to accept, edit or reject an idea or passage",
+        "Editor approval of factual and public-interest claims before export",
+        "Creator decision to record and later publish outside this product",
+        "Operations decision to warn, limit, pause or roll back the pilot"
+      ]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 4,
+    "high_stakes": 3,
+    "sensitive_data": 2,
+    "affected_scale": 4,
+    "human_review_need": 5,
+    "rationale": "Harm severity is 4 because a polished but unsupported or imitative script can cause reputational, copyright-related and revenue harm after a creator publishes it, even though the pilot itself cannot publish. High-stakes is 3: ordinary entertainment ideas are not eligibility or safety decisions, but scripts about real people or public-interest topics can materially affect reputation and audience decisions. Sensitive-data exposure is 2 because the pilot restricts inputs to creator-supplied public material and pseudonymous account IDs, while prompts can still accidentally contain personal data. Affected scale is 4 because one accepted passage can be broadcast to a large audience and affect quoted people, authors and the public who are not customers. Human-review need is 5 because source support, attribution, context and originality require an informed editorial judgment before export; these product triage scores are not used as legal classifications."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "This assessment is independent of the Industry Risk Snapshot. Law 71/2025/QH15 is effective from 1 January 2026: the product directly interacts with users and therefore requires AI-interaction notice under Article 44. Its frozen recommendation use appears to support narrow human work optimization, an Article 43(1)(b) exclusion from the high-risk definition, but the precise provider and deployer duties and whether generated scripts fall on the ministerial identification list remain unverified. The status therefore stays uncertain pending a signed Vietnamese legal review rather than being inferred from product risk scores.",
+      "source_ids": ["SRC-08"]
+    },
+    "eu": {
+      "status": "limited-transparency",
+      "rationale": "This assessment is performed separately from both the Vietnam analysis and the risk snapshot. The scoped copilot does not perform an Annex III eligibility or access decision; its relevant AI Act duties are provisionally the Article 50 transparency duties that apply from 2 August 2026: direct-interaction notice and provider-side detectable marking of generated text, plus deployer disclosure for public-interest text unless the stated human-review and editorial-responsibility exception is satisfied. Limited-transparency is provisional until counsel confirms provider and deployer roles, vendor evidence and the exception for each EU use.",
+      "source_ids": ["SRC-09", "SRC-10"]
+    },
+    "other_markets": "No United States launch is authorized in this release. U.S. Copyright Office guidance informs the human-contribution and disclosure control design only; it is not treated as a Vietnam, EU or general copyright clearance, and every additional market requires a new legal review.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "By the 2026-09-30 pilot review, at least 70% of a minimum 20 invited creators must reduce median time from a chosen topic plus public references to an editor-approved first draft by at least 30% versus each creator's preceding three-script baseline; a draft counts only when all guardrails pass and the editor rates usefulness at least 4 of 5.",
+    "risk_kri": "Each week, reviewer-confirmed unsupported factual sentences must be at or below 1.0% in a random sample of 200 exported factual sentences, with zero unsupported high-impact public-interest claims; report the numerator, denominator, language and content category and open an incident on either breach.",
+    "guardrail_metric": "Hard limit: zero exported drafts may contain an unresolved high-impact unsupported claim, a reviewer-confirmed unattributed near-copy, confirmed false authorship, or an export-gate bypass. One confirmed event pauses the affected export path within 60 minutes and the KPI cannot offset the breach.",
+    "review_cadence": "Operations reviews alerts daily; Product, Editorial Safety and Trust and Safety review the 200-sentence sample and all overrides weekly; the Risk Review Board reviews trends every two weeks and an independent reviewer audits monthly. Any guardrail breach, substantiated complaint, model or retrieval-vendor change, new data type, new market, public-interest scope expansion or material threshold change triggers immediate re-review before resumption."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Product Owner — Creator Workflow",
+    "risk_acceptance_owner": "Chair — AI Risk Review Board",
+    "independent_reviewer": "Independent Responsible AI and Legal Reviewer",
+    "decision": "research-only",
+    "release_blockers": [
+      "GAP-01: Factual-support and export-gate performance is not independently validated.",
+      "GAP-02: Similarity, attribution and override controls lack calibrated test evidence.",
+      "GAP-03: Bulk-generation abuse prevention and independent appeal are not acceptance-tested.",
+      "GAP-04: False-authorship prevention and 24-hour complaint containment are not demonstrated.",
+      "GAP-05: Vietnamese classification, actor duties and notice or marking obligations lack a signed current-law memo.",
+      "GAP-06: EU provider and deployer roles and Article 50 implementation are not approved; EU access must remain disabled.",
+      "GAP-07: Meaningful human-review capacity, evidence and override quality are not proven.",
+      "GAP-08: Alert, pause, rollback and independent resumption operations have not passed an end-to-end drill."
+    ],
+    "release_conditions": [
+      "Research is restricted to internal staff using synthetic prompts and creator-supplied public references; creator export, publishing connectors and external pilot access remain disabled.",
+      "Every GAP-01 through GAP-08 must reach done with its named evidence accepted by the Independent Responsible AI and Legal Reviewer before the Risk Review Board may consider a new decision.",
+      "Vietnam and European Union market access must be evaluated separately; closing one jurisdictional gap does not authorize the other market.",
+      "Any model, retrieval vendor, input-data, automation, public-interest use or market change reopens the affected gap and requires a new release decision."
+    ],
+    "next_review_trigger": "Review on 2026-09-30 or earlier when all eight blocker evidence packages are ready; immediately re-review after any guardrail breach, substantiated affected-person complaint, model or vendor change, new data type, automation increase, public-interest scope expansion or proposed new market.",
+    "residual_risk_rationale": "The three cases show distinct paths from fluent generation to public misinformation, unattributed similarity, editorial-queue overload and identity misuse. The current boundary removes autonomous publication but does not yet prove that export gates, meaningful review, abuse response or legal transparency work under load. The Risk Acceptance Owner therefore does not accept external-user residual risk, and the product remains research-only until every listed blocker is independently evidenced."
+  }
+}
