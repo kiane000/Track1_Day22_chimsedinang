@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Đặng Đức Hòa",
+    "student_id": "2A202601351",
+    "group_id": "GROUP-CONTENT-CREATOR-01",
+    "submitted_at": "2026-08-24T12:35:00+07:00"
+  },
+  "industry": "content-creator",
+  "product_context": {
+    "product_name": "CreatorStudio AI Content Assistant",
+    "product_stage": "pilot",
+    "problem_statement": "Content creators and brand marketers spend excessive time drafting multichannel marketing materials while facing high risks of ungrounded factual hallucinations, accidental copyright infringement, and inconsistent brand voice.",
+    "target_users": [
+      "digital content creators",
+      "social media marketers",
+      "brand copywriters",
+      "editorial reviewers"
+    ],
+    "value_hypothesis": "AI-assisted drafting with integrated source grounding and copyright pre-checks reduces content production time by 40% while preserving editorial accountability and preventing unverified claims.",
+    "in_scope": [
+      "drafting social media posts and blog outlines from user briefs",
+      "detecting ungrounded claims and potential copyright overlap against public sources",
+      "recommending tone adjustments and required citation disclosures",
+      "exporting drafts for human editorial review and sign-off"
+    ],
+    "non_goals": [
+      "autonomous publishing to live social media channels without human approval",
+      "generating synthetic deepfake likeness of real persons without verified consent",
+      "providing definitive legal indemnity against third-party intellectual property claims"
+    ],
+    "user_journey_moment": "During the drafting and pre-publication review phase after creator inputs creative brief and before scheduled publishing",
+    "target_launch_or_review_date": "2026-11-01",
+    "automation_level": "decision-support",
+    "fallback_experience": "Creators revert to standard template-based rich text editor with manual citation checking if the AI service is offline, throttled, or flagged by safety guardrails.",
+    "decision_reversibility": "reversible"
+  },
+  "system_profile": {
+    "purpose": "Provide generative draft assistance and automated source grounding for digital creators while enforcing mandatory human-in-the-loop sign-off before distribution.",
+    "user_groups": [
+      "independent creators",
+      "agency marketers",
+      "corporate brand editors",
+      "compliance moderators"
+    ],
+    "decision_impact": "Influences content quality, public audience perception, and creator reputational and commercial exposure while leaving final publication control to human editors.",
+    "data_types": [
+      "creator prompts and briefs",
+      "brand style guidelines",
+      "draft text and media metadata",
+      "public reference citations"
+    ],
+    "deployment_context": "Cloud-hosted SaaS web application with browser extension integration for multi-platform creator workflows in digital marketing agencies and solo studios.",
+    "target_markets": [
+      "Vietnam",
+      "European Union",
+      "United States"
+    ],
+    "system_boundary": {
+      "model": "commercial multimodal generative LLM fine-tuned for marketing copy alongside embedding-based plagiarism and grounding checker",
+      "application": "web-based creator dashboard with interactive drafting canvas, source attribution panel, and export manager",
+      "people": [
+        "content creator",
+        "editor-in-chief",
+        "legal compliance officer",
+        "platform moderation team"
+      ],
+      "vendors": [
+        "cloud foundation model provider",
+        "third-party copyright search API",
+        "cloud vector database vendor"
+      ],
+      "upstream_inputs": [
+        "creator creative briefs",
+        "brand guideline documents",
+        "reference URLs and public search feeds"
+      ],
+      "downstream_decisions": [
+        "approve draft for staging",
+        "flag for manual copyright review",
+        "reject generation due to toxic or unsafe content"
+      ]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 3,
+    "high_stakes": 2,
+    "sensitive_data": 2,
+    "affected_scale": 4,
+    "human_review_need": 5,
+    "rationale": "In content creation, AI hallucinations and copyright infringements can cause severe reputational damage, financial loss from IP lawsuits, and mass misinformation spreading to large public audiences (Scale 4). However, physical harm is low (Stakes 2) and published digital content is largely reversible (Severity 3). Because models can generate persuasive falsehoods and plagiarized text at speed, mandatory human editorial review before publication is critical (Review Need 5)."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Vietnam AI Law (134/2025/QH15) took effect in March 2026 establishing foundational principles on digital content transparency and intellectual property protection, but specific operational circulars for generative AI creator tools require formal statutory legal review prior to market rollout.",
+      "source_ids": ["SRC-04"]
+    },
+    "eu": {
+      "status": "limited-transparency",
+      "rationale": "Under the EU AI Act (Article 50), AI systems generating synthetic marketing and text content are subject to transparency obligations requiring clear disclosure and watermarking to prevent deceptive dissemination, while intellectual property compliance with Union copyright rules must be verified.",
+      "source_ids": ["SRC-05"]
+    },
+    "other_markets": "United States fair use doctrine and FTC endorsement guides require independent legal assessment before scaling.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Median draft completion time for creator marketing campaigns is reduced by at least 40 percent compared to manual baseline.",
+    "risk_kri": "Post-publication factual correction rate remains strictly below 0.5 percent across all audited creator outputs.",
+    "guardrail_metric": "Zero unflagged drafts with over 15 percent copyrighted lexical similarity permitted to export without human review.",
+    "review_cadence": "Bi-weekly during pilot phase and monthly thereafter, or immediately upon any copyright notice or critical factual escalation."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Principal Product Manager, Creator Platform",
+    "risk_acceptance_owner": "Head of Trust and Safety",
+    "independent_reviewer": "Responsible AI Compliance Board Member",
+    "decision": "conditional-go",
+    "release_blockers": [
+      "GAP-01: Factual grounding verification benchmark must achieve 98 percent accuracy before public release",
+      "GAP-02: Copyright similarity detection engine must pass independent verification with zero missed verbatim extracts"
+    ],
+    "release_conditions": [
+      "Mandatory human-in-the-loop sign-off enabled for all exported content",
+      "Pilot deployment restricted to registered beta creators who completed AI safety guidelines",
+      "Real-time copyright and hallucination telemetry actively logging to compliance monitoring portal"
+    ],
+    "next_review_trigger": "Scheduled pilot milestone review on 2026-11-01 or immediately upon any third-party copyright takedown notice or regulatory guidance update.",
+    "residual_risk_rationale": "Residual risks of factual hallucinations and accidental copyright overlap are mitigated to acceptable levels through mandatory human editorial review, real-time similarity scanning, and restrictive pilot access while blockers GAP-01 and GAP-02 are finalized."
+  }
+}
